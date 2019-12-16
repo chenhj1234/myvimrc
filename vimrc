@@ -94,6 +94,10 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " ...
 
+"call vundle#begin()
+"Plugin 'scrooloose/nerdtree'
+"call vundle#end()
+
 filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -113,6 +117,21 @@ filetype plugin indent on     " required
 " Ctrl + w + w : switch edit window
 " Ctrl + ] : function declaration
 " Ctrl + [ : nav back
-map <f7> :Tlist<CR>
+map <C-f7> :Tlist<CR>
+" nmap <F8> :TlistToggle<CR><CR>
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+set ut=100
+
+
+" --------------------------------------------- Under parts are from Trinity
+nmap <C-F8>  :TrinityToggleAll<CR>
+nmap <C-F9>  :TrinityToggleSourceExplorer<CR>
+nmap <C-F10> :TrinityToggleTagList<CR>
+nmap <C-F11> :TrinityToggleNERDTree<CR>
+
+" --------------------------------------------- Under parts are from Nerdtree
+nmap <F9> :NERDTreeFind<CR><CR>
+let NERDTreeWinPos=1
 
 
