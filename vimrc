@@ -41,16 +41,16 @@ set nowrap
 set noeb
 
 " 自動切換當前目錄。
-set autochdir
+" set autochdir
 
 " 捲動時保留底下 3 行。
 set scrolloff=3
 
 " 摺疊 Folding。
-set foldenable
-set foldmethod=indent
-set foldcolumn=1
-set foldlevel=5
+"set foldenable
+"set foldmethod=indent
+"set foldcolumn=1
+"set foldlevel=5
 
 " 在 fish 裡相容 Vim 裡的 Neobundle。
 set shell=/bin/bash
@@ -63,33 +63,33 @@ set cursorcolumn
 " ---------------------------------------------------------- Under Parts Are
 "  from vundle : https://blog.gtwang.org/linux/vundle-vim-bundle-plugin-manager/
 "
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"set nocompatible              " be iMproved, required
+"filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
 " alternatively, pass a path where Vundle should install plugins
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+"Plugin 'gmarik/vundle'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'tpope/vim-rails.git'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'tpope/vim-rails.git'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " scripts from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-Plugin 'FuzzyFinder'
+"Plugin 'L9'
+"Plugin 'FuzzyFinder'
 " scripts not on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " ...
@@ -98,7 +98,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'scrooloose/nerdtree'
 "call vundle#end()
 
-filetype plugin indent on     " required
+"filetype plugin indent on     " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -133,5 +133,26 @@ nmap <C-F11> :TrinityToggleNERDTree<CR>
 " --------------------------------------------- Under parts are from Nerdtree
 nmap <F9> :NERDTreeFind<CR><CR>
 let NERDTreeWinPos=1
+
+" --------------------------------------------- Under parts are from ctags
+set tags=./tags,./TAGS,tags;~,TAGS;~
+
+" --------------------------------------------- Under parts are from cscope
+set cscopetag
+set csto=0
+if filereadable("cscope.out")
+   cs add cscope.out
+elseif $CSCOPE_DB != ""
+   cs add $CSCOPE_DB
+endif
+set cscopeverbose
+nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap zt :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap ze :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 

@@ -1491,7 +1491,8 @@ function! <SID>SrcExpl_Init()
            \ '\v\.@<=\d+')[1:] % len(g:SrcExpl_colorSchemeList)]
 
     " Auto change current work directory
-    exe "set autochdir"
+    " exe "set autochdir"
+    " exe "autocmd BufEnter * silent! lcd %:p:h"
     " Let Vim find the possible tags file
     exe "set tags=tags;"
     " Set the actual update time according to user's requirement
