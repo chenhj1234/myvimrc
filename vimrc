@@ -117,13 +117,13 @@ set cursorcolumn
 " Ctrl + w + w : switch edit window
 " Ctrl + ] : function declaration
 " Ctrl + [ : nav back
-map <C-f7> :Tlist<CR>
+" map <C-f7> :Tlist<CR>
 " nmap <F8> :TlistToggle<CR><CR>
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 set ut=100
-
-
+set laststatus=2
+set statusline+=%F
 " --------------------------------------------- Under parts are from Trinity
 nmap <C-F8>  :TrinityToggleAll<CR>
 nmap <C-F9>  :TrinityToggleSourceExplorer<CR>
@@ -146,6 +146,14 @@ elseif $CSCOPE_DB != ""
    cs add $CSCOPE_DB
 endif
 set cscopeverbose
+"cs find s {name} : 找出C語言name的符號
+"cs find g {name} : 找出name定義的地方
+"cs find c {name} : 找出使用name的地方
+"cs find t {name} : 找出name的字串
+"cs find e {name} : 相當於egrep功能，但速度更佳
+"cs find f {name} : 尋找檔案
+"cs find i {name} : 尋找include此檔案的檔案
+"cs find d {name} : 尋找name裡面使用到的函式
 nmap zs :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap zg :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap zc :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -155,4 +163,8 @@ nmap zf :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap zi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap zd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+
+" --------------------------------------------- Settings for Must Resently Used file plugin
+let MRU_Use_Current_Window = 1
+let MRU_Max_Entries = 10
 
